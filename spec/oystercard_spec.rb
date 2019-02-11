@@ -42,4 +42,27 @@ describe '#deduct' do
 #  end
 end # deduct
 
+describe '#in_journey?' do
+# KM - {} for blocks and () for arguments
+  it 'returns whether we are in a journey' do
+    expect(subject.in_journey?).to eq false 
+  end
+end # in_journey
+
+describe '#touch_in' do
+  it 'returns whether we are in a journey' do
+    # expect(subject.touch_in).to eq true 
+    subject.touch_in
+    expect( subject.in_journey?).to eq true 
+  end
+end # touch_in
+
+describe '#touch_out' do
+  it 'returns whether we are in a journey' do
+    # expect(subject.touch_out).to eq false 
+    subject.touch_out
+    expect( subject.in_journey?).to eq false 
+  end
+end # touch_in
+
 end

@@ -23,4 +23,14 @@ I need my fare deducted from my card
 card = Oystercard.new
 card.deduct(10) => balance - 10
 
+In order to get through the barriers.
+As a customer
+I need to touch in and out.
+card = Oystercard.new
+card.in_journey? == false
+card.touch_in == true
+card.in_journey? == true
+card.touch_out == true
+card.in_journey? == false
+
 
