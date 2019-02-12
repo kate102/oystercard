@@ -40,4 +40,11 @@ card = Oystercard.new
 card.touch_in == 'Not enough credit'
 card.min_bal? == 1
 
+In order to pay for my journey
+As a customer
+When my journey is complete, I need the correct amount deducted from my card
+card.touch_out
+card.balance == 9
+
+
 

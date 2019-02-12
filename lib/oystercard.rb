@@ -32,6 +32,7 @@ class Oystercard
 # KM - Not happy about this logic!
  def touch_out
    @in_journey = false
+   @balance -= 1
    print 'Touch Out Successful'
  end
 

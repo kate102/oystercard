@@ -56,16 +56,20 @@ end # touch_in
 
 describe '#touch_out' do
   it 'returns whether we are in a journey' do
-    # expect(card.touch_out).to eq false 
     card.touch_out
     expect( card.in_journey?).to be false
   end
-end # touch_in
+
+  it 'deducts £1 from balance' do
+    card.touch_out
+    expect{ card.touch_out }.to change{ card.balance }.by -1
+  end
+end # touch_out
 
 describe '#minimum' do
   it 'returns the minimum balance' do
     expect( card.min_bal?).to be 1
   end
-end # touch_in
+end # minimum
 
 end
