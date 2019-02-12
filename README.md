@@ -28,9 +28,16 @@ As a customer
 I need to touch in and out.
 card = Oystercard.new
 card.in_journey? == false
-card.touch_in == true
+card.touch_in == 'Touch In Successful'
 card.in_journey? == true
-card.touch_out == true
+card.touch_out == 'Touch Out Successful'
 card.in_journey? == false
+
+In order to pay for my journey
+As a customer
+I need to have the minimum amount (£1) for a single journey.
+card = Oystercard.new
+card.touch_in == 'Not enough credit'
+card.min_bal? == 1
 
 
