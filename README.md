@@ -52,6 +52,7 @@ I need to know where I've travelled from
 card.touch_in
 card.origin == 'Camden'
 
-
-
-
+In order to know where I have been
+As a customer
+I want to see all my previous trips
+card.trips
