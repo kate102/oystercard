@@ -83,8 +83,13 @@ describe '#trips' do
   it 'returns the all of the trips' do
     card.touch_in(station1)
     card.touch_out(station2)
-    expect(card.trips[0]).to eq([station1,station2])
+    expect(card.trips[0]).to eq({entry: station1,exit: station2})
   end
-end # minimum
+
+  it 'returns empty on initialized card' do
+    expect(card.trips.empty?).to eq true  
+  end
+end # trips
+
 
 end
