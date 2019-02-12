@@ -6,7 +6,7 @@ class Oystercard
 
  def initialize( balance = 0)
     @balance = balance
-    @trip = []
+    @trip = {}
     @trips = []
  end
 
@@ -25,7 +25,7 @@ class Oystercard
  end
 
  def touch_in(station)
-   @trip[0] = station
+   @trip[:entry] = station
    fail "Not enough credit" if @balance < MIN_BAL
    print 'Touch In Successful'
    @entry_station = station
@@ -34,7 +34,7 @@ class Oystercard
 
 # KM - Not happy about this logic!
  def touch_out(station)
-   @trip << station
+   @trip[:exit] = station
    @trips << @trip  
    @balance -= 1
    print 'Touch Out Successful'
