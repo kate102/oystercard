@@ -1,6 +1,8 @@
 require 'oystercard'
 describe Oystercard do
   let (:card) { Oystercard.new(10) }
+  let (:station) { double(:station) }
+
 
 # KM - Why is there a # sign here?
 describe '#top_up' do
@@ -44,13 +46,18 @@ describe '#touch_in' do
   it 'returns whether we are in a journey' do
     card2 = Oystercard.new
     card2.top_up(10)
-    card2.touch_in
+    card2.touch_in(station)
     expect( card2.in_journey?).to be true 
   end
 
   it 'fail if not enough credit' do
     card3 = Oystercard.new
-    expect{ card3.touch_in }. to raise_error "Not enough credit"
+    expect{ card3.touch_in(station) }. to raise_error "Not enough credit"
+  end
+
+  it 'update entry_station after touch in' do 
+    card.touch_in(station)
+    expect( card.entry_station ).to eq station
   end
 end # touch_in
 

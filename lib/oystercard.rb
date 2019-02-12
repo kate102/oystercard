@@ -1,12 +1,11 @@
 class Oystercard
 
- attr_accessor :balance, :in_journey
+ attr_accessor :balance, :entry_station
  MAX_LIMIT = 90
  MIN_BAL   = 1
 
  def initialize( balance = 0)
     @balance = balance
-    @in_journey = false
  end
 
  def top_up(amount)
@@ -20,21 +19,21 @@ class Oystercard
  end
 
  def in_journey?
-   @in_journey 
+   @entry_station != nil
  end
 
- def touch_in
+ def touch_in(station)
    fail "Not enough credit" if @balance < MIN_BAL
-   @in_journey = true
    print 'Touch In Successful'
+   @entry_station = station
  end
 
 # KM - Not happy about this logic!
  def touch_out
-   @in_journey = false
    @balance -= 1
    print 'Touch Out Successful'
- end
+   @entry_station = nil
+end
 
  def min_bal?
    MIN_BAL
